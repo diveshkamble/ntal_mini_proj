@@ -1,0 +1,10 @@
+.login-form-div{
+  width:40%;
+  margin-top: 10%;
+}
+
+.login-form-form{
+  border:1px solid black;
+  padding:50px;
+  border-radius: 10px;
+}

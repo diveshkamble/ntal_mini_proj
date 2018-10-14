@@ -1,0 +1,55 @@
+doctype html
+html(dir='ltr', lang='en')
+  head
+    meta(charset='utf-8')
+    title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+    script(defer='', src='https://use.fontawesome.com/releases/v5.0.9/js/all.js', integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/simplecartjs/3.0.5/simplecart.min.js')
+    link(rel='stylesheet', href='/css/browse.css')
+    script(src='/socket.io/socket.io.js')
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
+      a.navbar-brand(href='#')
+        span.fas.fa-book
+        |  Online Book Store
+      form.form-inline(style='margin-left:40%;' method='get' action='/search')
+        input.form-control.mr-sm-2(placeholder='Search', aria-label='Search', type='search' name='search')
+        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+      #navbarSupportedContent.collapse.navbar-collapse(style='margin-left:5%;')
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/login')
+              | Browse 
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/login') Logout
+    .bookContainer.container
+      form(action='/comment', method='post')
+        .input-group
+          .input-group-prepend
+            span.input-group-text Comment Box
+          textarea.form-control(aria-label='Comment Box', name='comment')
+        button.btn.btn-primary(type='submit') Submit
+    .commentContainer.container
+    script.
+      var socket = io.connect('/');
+      socket.emit('getComments');
+      socket.on('commentsData', function(data) {
+        console.log(data);
+        console.log(data[0].comment);
+      for(i=0;i<data.length;i++)
+      {
+      $(".commentContainer").append("<div class='card' style='width: 60rem;'>"+
+      "<div class='card-body'>"+
+      "<p class='card-text'>"+data[i].comment+"</p>"+
+      "</div>"+
+      "</div>"+
+      "<br>"
+      );
+      }
+      });

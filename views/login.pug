@@ -1,0 +1,51 @@
+doctype html
+html(lang='en', dir='ltr')
+  head
+    meta(charset='utf-8')
+    |     
+    title Login
+    |     
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    |     
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    |     
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    |     
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    |     
+    link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+    |     
+    script(defer='', src='https://use.fontawesome.com/releases/v5.0.9/js/all.js', integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl', crossorigin='anonymous')
+    |     
+    link(rel='stylesheet', href='/css/login.css')
+  |   
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='#')
+        span.fas.fa-book
+        |     Online Book Store
+      |   
+      #navbarSupportedContent.collapse.navbar-collapse(style='margin-left:70%;')
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/login')
+              | Login 
+              span.sr-only (current)
+          |       
+          li.nav-item
+            a.nav-link(href='/signup') Sign Up
+    .login-form-div.container
+      form.login-form-form.container(action='/login-submit' method='post')
+        .input-group.mb-3
+          .input-group-prepend
+            span#inputGroup-sizing-default.input-group-text Email
+          |   
+          input.form-control(type='text', name='email', aria-label='Default', aria-describedby='inputGroup-sizing-default')
+        .input-group.mb-3
+          .input-group-prepend
+            span#inputGroup-sizing-default.input-group-text Password
+          |   
+          input.form-control(type='password',name='password', aria-label='Default', aria-describedby='inputGroup-sizing-default')
+        button.btn.btn-primary(type='submit') Login
+        span(style='margin-left:10px;')
+          a(href='#') Forgot Password ?

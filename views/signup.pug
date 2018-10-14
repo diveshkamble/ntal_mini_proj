@@ -1,0 +1,93 @@
+doctype html
+html(lang='en', dir='ltr')
+  head
+    meta(charset='utf-8')
+    |     
+    title Login
+    |     
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    |     
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    |     
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    |     
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    |     
+    link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+    |     
+    script(defer='', src='https://use.fontawesome.com/releases/v5.0.9/js/all.js', integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl', crossorigin='anonymous')
+    |     
+    link(rel='stylesheet', href='/css/signup.css')
+  |   
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='#')
+        span.fas.fa-book
+        |     Online Book Store
+      |   
+      #navbarSupportedContent.collapse.navbar-collapse(style='margin-left:70%;')
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/login') Login
+          |       
+          li.nav-item.active
+            a.nav-link(href='/signup')
+              | Sign Up 
+              span.sr-only (current)
+    .signup-form-div
+      form.signup-form-form.container(action='/signup-submit' method='post')
+        .input-group.mb-3
+          .input-group-prepend
+            span.input-group-text(id='') First and last name
+          |         
+          input.form-control(type='text', name='firstname' required)
+          |         
+          input.form-control(type='text', name='lastname' required)
+        .input-group.mb-3
+          .input-group-prepend
+            span#inputGroup-sizing-default.input-group-text Email
+          |   
+          input.form-control(type='email', name='email', aria-label='Default', aria-describedby='inputGroup-sizing-default' required)
+        .input-group.mb-3
+          .input-group-prepend
+            span#inputGroup-sizing-default.input-group-text Password
+          |   
+          input.form-control(type='password',name='password', aria-label='Default', aria-describedby='inputGroup-sizing-default' required)
+        .input-group.mb-3
+          .input-group-prepend
+            label.input-group-text(for='branchSelect') Branch
+          |   
+          select#branchSelect.custom-select(name='branch' aria-required='true' required)
+            option(selected='' value='') Select Branch....
+            |     
+            option(value='computer') Computer
+            |     
+            option(value='extc') Electronics &amp; Telecom.
+            |     
+            option(value='biotech') Biotech
+            |     
+            option(value='mech') Mechanical
+            |     
+            option(value='civil') Civil
+            |     
+            option(value='etrx') Electronics
+        .input-group.mb-3
+          .input-group-prepend
+            label.input-group-text(for='yearSelect') Year
+          |   
+          select#yearSelect.custom-select(name='year' aria-required='true' required)
+            option(selected='' value='') Select Year
+            |     
+            option(value='fe') F.E.
+            |     
+            option(value='se') S.E.
+            |     
+            option(value='te') T.E.
+            |     
+            option(value='be') B.E.
+        .input-group.mb-3
+          .input-group-prepend
+            span#inputGroup-sizing-default.input-group-text Unique Id
+          |   
+          input.form-control(name='uniqueid', type='text', aria-label='Default', aria-describedby='inputGroup-sizing-default' required)
+        button.btn.btn-primary(type='submit') Sign Up

@@ -1,0 +1,527 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    meta(name='description', content='')
+    |     
+    meta(name='author', content='')
+    |     
+    link(rel='shortcut icon', href='assets/ico/favicon.ico')
+    |     
+    title MoW Pay
+    // Bootstrap core CSS
+    link(href='/css/bootstrap.css', rel='stylesheet')
+    // Custom styles for this template
+    link(href='/css/style.css', rel='stylesheet')
+    |     
+    link(href='/css/font-awesome.min.css', rel='stylesheet')
+    |     
+    script(src='/javascripts/modernizr.js')
+    | &#x9;
+    style.
+      html,body,.wrapper{
+      background: #f7f7f7;
+      }
+      .steps {
+      margin-top: -41px;
+      display: inline-block;
+      float: right;
+      font-size: 16px
+      }
+      .step {
+      float: left;
+      background: white;
+      padding: 7px 13px;
+      border-radius: 1px;
+      text-align: center;
+      width: 100px;
+      position: relative
+      }
+      .step_line {
+      margin: 0;
+      width: 0;
+      height: 0;
+      border-left: 16px solid #fff;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
+      z-index: 1008;
+      position: absolute;
+      left: 99px;
+      top: 1px
+      }
+      .step_line.backline {
+      border-left: 20px solid #f7f7f7;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      z-index: 1006;
+      position: absolute;
+      left: 99px;
+      top: -3px
+      }
+      .step_complete {
+      background: #357ebd
+      }
+      .step_complete a.check-bc, .step_complete a.check-bc:hover,.afix-1,.afix-1:hover{
+      color: #eee;
+      }
+      .step_line.step_complete {
+      background: 0;
+      border-left: 16px solid #357ebd
+      }
+      .step_thankyou {
+      float: left;
+      background: white;
+      padding: 7px 13px;
+      border-radius: 1px;
+      text-align: center;
+      width: 100px;
+      }
+      .step.check_step {
+      margin-left: 5px;
+      }
+      .ch_pp {
+      text-decoration: underline;
+      }
+      .ch_pp.sip {
+      margin-left: 10px;
+      }
+      .check-bc,
+      .check-bc:hover {
+      color: #222;
+      }
+      .SuccessField {
+      border-color: #458845 !important;
+      -webkit-box-shadow: 0 0 7px #9acc9a !important;
+      -moz-box-shadow: 0 0 7px #9acc9a !important;
+      box-shadow: 0 0 7px #9acc9a !important;
+      background: #f9f9f9 url(../images/valid.png) no-repeat 98% center !important
+      }
+      .btn-xs{
+      line-height: 28px;
+      }
+      /*login form*/
+      .login-container{
+      margin-top:30px ;
+      }
+      .login-container input[type=submit] {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+      position: relative;
+      }
+      .login-container input[type=text], input[type=password] {
+      height: 44px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+      -webkit-appearance: none;
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      border-top: 1px solid #c0c0c0;
+      /* border-radius: 2px; */
+      padding: 0 8px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      }
+      .login-container input[type=text]:hover, input[type=password]:hover {
+      border: 1px solid #b9b9b9;
+      border-top: 1px solid #a0a0a0;
+      -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      }
+      .login-container-submit {
+      /* border: 1px solid #3079ed; */
+      border: 0px;
+      color: #fff;
+      text-shadow: 0 1px rgba(0,0,0,0.1);
+      background-color: #357ebd;/*#4d90fe;*/
+      padding: 17px 0px;
+      font-family: roboto;
+      font-size: 14px;
+      /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+      }
+      .login-container-submit:hover {
+      /* border: 1px solid #2f5bb7; */
+      border: 0px;
+      text-shadow: 0 1px rgba(0,0,0,0.3);
+      background-color: #357ae8;
+      /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+      }
+      .login-help{
+      font-size: 12px;
+      }
+      .asterix{
+      background:#f9f9f9 url(../images/red_asterisk.png) no-repeat 98% center !important;
+      }
+      /* images*/
+      ol, ul {
+      list-style: none;
+      }
+      .hand {
+      cursor: pointer;
+      cursor: pointer;
+      }
+      .cards{
+      padding-left:0;
+      }
+      .cards li {
+      -webkit-transition: all .2s;
+      -moz-transition: all .2s;
+      -ms-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+      background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
+      background-position: 0 0;
+      float: left;
+      height: 32px;
+      margin-right: 8px;
+      text-indent: -9999px;
+      width: 51px;
+      }
+      .cards .mastercard {
+      background-position: -51px 0;
+      }
+      .cards li {
+      -webkit-transition: all .2s;
+      -moz-transition: all .2s;
+      -ms-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+      background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
+      background-position: 0 0;
+      float: left;
+      height: 32px;
+      margin-right: 8px;
+      text-indent: -9999px;
+      width: 51px;
+      }
+      .cards .amex {
+      background-position: -102px 0;
+      }
+      .cards li {
+      -webkit-transition: all .2s;
+      -moz-transition: all .2s;
+      -ms-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+      background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
+      background-position: 0 0;
+      float: left;
+      height: 32px;
+      margin-right: 8px;
+      text-indent: -9999px;
+      width: 51px;
+      }
+      .cards li:last-child {
+      margin-right: 0;
+      }
+      /* images end */
+      /*
+      * BOOTSTRAP
+      */
+      .container{
+      border: none;
+      }
+      .panel-footer{
+      background:#fff;
+      }
+      .btn{
+      border-radius: 1px;
+      }
+      .btn-sm, .btn-group-sm > .btn{
+      border-radius: 1px;
+      }
+      .input-sm, .form-horizontal .form-group-sm .form-control{
+      border-radius: 1px;
+      }
+      .panel-info {
+      border-color: #999;
+      }
+      .panel-heading {
+      border-top-left-radius: 1px;
+      border-top-right-radius: 1px;
+      }
+      .panel {
+      border-radius: 1px;
+      }
+      .panel-info > .panel-heading {
+      color: #eee;
+      border-color: #999;
+      }
+      .panel-info > .panel-heading {
+      background-image: linear-gradient(to bottom, #555 0px, #888 100%);
+      }
+      hr {
+      border-color: #999 -moz-use-text-color -moz-use-text-color;
+      }
+      .panel-footer {
+      border-bottom-left-radius: 1px;
+      border-bottom-right-radius: 1px;
+      border-top: 1px solid #999;
+      }
+      .btn-link {
+      color: #888;
+      }
+      hr{
+      margin-bottom: 10px;
+      margin-top: 10px;
+      }
+      /** MEDIA QUERIES **/
+      @media only screen and (max-width: 989px){
+      .span1{
+      margin-bottom: 15px;
+      clear:both;
+      }
+      }
+      @media only screen and (max-width: 764px){
+      .inverse-1{
+      float:right;
+      }
+      }
+      @media only screen and (max-width: 586px){
+      .cart-titles{
+      display:none;
+      }
+      .panel {
+      margin-bottom: 1px;
+      }
+      }
+      .form-control {
+      border-radius: 1px;
+      }
+      @media only screen and (max-width: 486px){
+      .col-xss-12{
+      width:100%;
+      }
+      .cart-img-show{
+      display: none;
+      }
+      .btn-submit-fix{
+      width:100%;
+      }
+      }
+      /*
+      @media only screen and (max-width: 777px){
+      .container{
+      overflow-x: hidden;
+      }
+      }*/
+      .center{
+      margin:auto;
+      }
+  |   
+  body
+    .container.mt
+      .row.cart-head
+        .container
+          .row
+            p
+          |                 
+          .row
+          |                 
+          .row
+            p
+      |             
+      .row.cart-body
+        form.form-horizontal(method='post', action='/orderconfirmed')
+          .col-lg-6.col-md-6.col-sm-6.col-xs-12.col-md-push-6.col-sm-push-6
+          |                 
+          .col-lg-6.col-md-6.col-sm-6.col-xs-12.col-md-pull-6.col-sm-pull-6
+            // SHIPPING METHOD
+            // SHIPPING METHOD END
+            // CREDIT CART PAYMENT
+            .center
+              .panel.panel-info
+                .panel-heading
+                  span
+                    i.glyphicon.glyphicon-lock
+                  |  Secure Payment
+                |                         
+                .panel-body
+                  .form-group
+                    .col-md-12
+                      strong Card Type:
+                    |                                 
+                    .col-md-12
+                      select#CreditCardType.form-control(name='CreditCardType')
+                        option(value='5') Visa
+                        |                                         
+                        option(value='6') MasterCard
+                        |                                        
+                        option(value='7') American Express
+                        |                                         
+                        option(value='8') Discover
+                  |                             
+                  .form-group
+                    .col-md-12
+                      strong Credit Card Number:
+                    |                                 
+                    .col-md-12
+                      input.form-control(type='number', name='card_number', value='',min='1',max='9999999999999999',required='1')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; 
+                  .form-group
+                    .col-md-12
+                      strong Credit Card Holder&apos;s Name:
+                    |                                 
+                    .col-md-12
+                      input.form-control(type='text', name='card_name', value='',maxlength='50',required='1')
+                  |                             
+                  .form-group
+                    .col-md-12
+                      strong Card CVV:
+                    |                                 
+                    .col-md-12
+                      input.form-control(type='number', name='card_code', value='',min='1',max='999',required='1')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  .form-group
+                    .col-md-12
+                      strong Amount:
+                    |                                 
+                    .col-md-12
+                      input.form-control(type='text', name='amount', readonly='readonly', value=total)
+                  |                             
+                  .form-group
+                    .col-md-12
+                      strong Expiration Date
+                    |                                 
+                    .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                      select.form-control(name='expiry_month',required='1')
+                        option(value='') Month                                      
+                        option(value='01') 01                                      
+                        option(value='02') 02                                   
+                        option(value='03') 03                                  
+                        option(value='04') 04                                 
+                        option(value='05') 05                                 
+                        option(value='06') 06                                 
+                        option(value='07') 07                                 
+                        option(value='08') 08                                
+                        option(value='09') 09                                  
+                        option(value='10') 10                                  
+                        option(value='11') 11                                   
+                        option(value='12') 12                       
+                    .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                      select.form-control(name='expiry_year',required='1')
+                        option(value='') Year                              
+                        option(value='2015') 2015                                     
+                        option(value='2016') 2016                                     
+                        option(value='2017') 2017                                 
+                        option(value='2018') 2018                                 
+                        option(value='2019') 2019                                
+                        option(value='2020') 2020                              
+                        option(value='2021') 2021                              
+                        option(value='2022') 2022                              
+                        option(value='2023') 2023                              
+                        option(value='2024') 2024                                
+                        option(value='2025') 2025                 
+                  .form-group
+                    .col-md-12
+                      span Pay secure using your credit card.
+                    |                                 
+                    .col-md-12
+                      ul.cards
+                        li.visa.hand Visa
+                        |                                         
+                        li.mastercard.hand MasterCard
+                        |                                         
+                        li.amex.hand Amex
+                      |                                     
+                      .clearfix
+                  |                             
+                  .form-group
+                    .col-md-6.col-sm-6.col-xs-12
+                      button.btn.btn-primary.btn-submit-fix(type='submit') Place Order
+              // CREDIT CART PAYMENT END
+      |             
+      .row.cart-footer
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    |     
+    script(src='/javascripts/bootstrap.min.js')
+    | &#x9;
+    script(src='/javascripts/retina-1.1.0.js')
+    | &#x9;
+    script(src='/javascripts/jquery.hoverdir.js')
+    | &#x9;
+    script(src='/javascripts/jquery.hoverex.min.js')
+    | &#x9;
+    script(src='/javascripts/jquery.prettyPhoto.js')
+    |   &#x9;
+    script(src='/javascripts/jquery.isotope.min.js')
+    |   &#x9;
+    script(src='/javascripts/custom.js')
+    |     
+    script.
+      // Portfolio
+      (function($) {
+      "use strict";
+      var $container = $('.portfolio'),
+      $items = $container.find('.portfolio-item'),
+      portfolioLayout = 'fitRows';
+      if( $container.hasClass('portfolio-centered') ) {
+      portfolioLayout = 'masonry';
+      }
+      $container.isotope({
+      filter: '*',
+      animationEngine: 'best-available',
+      layoutMode: portfolioLayout,
+      animationOptions: {
+      duration: 750,
+      easing: 'linear',
+      queue: false
+      },
+      masonry: {
+      }
+      }, refreshWaypoints());
+      function refreshWaypoints() {
+      setTimeout(function() {
+      }, 1000);
+      }
+      $('nav.portfolio-filter ul a').on('click', function() {
+      var selector = $(this).attr('data-filter');
+      $container.isotope({ filter: selector }, refreshWaypoints());
+      $('nav.portfolio-filter ul a').removeClass('active');
+      $(this).addClass('active');
+      return false;
+      });
+      function getColumnNumber() {
+      var winWidth = $(window).width(),
+      columnNumber = 1;
+      if (winWidth > 1200) {
+      columnNumber = 5;
+      } else if (winWidth > 950) {
+      columnNumber = 4;
+      } else if (winWidth > 600) {
+      columnNumber = 3;
+      } else if (winWidth > 400) {
+      columnNumber = 2;
+      } else if (winWidth > 250) {
+      columnNumber = 1;
+      }
+      return columnNumber;
+      }
+      function setColumns() {
+      var winWidth = $(window).width(),
+      columnNumber = getColumnNumber(),
+      itemWidth = Math.floor(winWidth / columnNumber);
+      $container.find('.portfolio-item').each(function() {
+      $(this).css( {
+      width : itemWidth + 'px'
+      });
+      });
+      }
+      function setPortfolio() {
+      setColumns();
+      $container.isotope('reLayout');
+      }
+      $container.imagesLoaded(function () {
+      setPortfolio();
+      });
+      $(window).on('resize', function () {
+      setPortfolio();
+      });
+      })(jQuery);

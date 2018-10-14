@@ -1,0 +1,11 @@
+.signup-form-div{
+  width:90%;
+  margin-top: 4%;
+  margin-left: 4%;
+}
+
+.signup-form-div{
+  border:1px solid black;
+  padding:50px;
+  border-radius: 10px;
+}
